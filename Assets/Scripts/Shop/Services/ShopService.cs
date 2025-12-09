@@ -34,10 +34,10 @@ namespace Shop.Services
             foreach (var bundle in _bundles)
             {
                 var bundleCardView = Instantiate(_bundleCardViewPrefab);
-                bundleCardView.Setup(bundle);
                 bundleCardView.OnBuyButtonClicked += OnBuyButtonClicked;
                 bundleCardView.OnBuyButtonUpdate += OnBuyButtonUpdate;
                 bundleCardView.OnInfoButtonClicked += OnInfoButtonClicked;
+                bundleCardView.Setup(bundle);
                 _bundleShopView.AddBundleViewCard(bundleCardView);
             }
         }

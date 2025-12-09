@@ -35,9 +35,9 @@ namespace Shop.Services
         {
             var bundleCardView = _bundleCardView;
             _currentBundleCardView = bundleCardView;
-            bundleCardView.Setup(BundleNavigation.SelectedBundle, true);
             bundleCardView.OnBuyButtonClicked += OnBuyButtonClicked;
             bundleCardView.OnBuyButtonUpdate += OnBuyButtonUpdate;
+            bundleCardView.Setup(BundleNavigation.SelectedBundle, true);
         }
 
         private void OnBuyButtonClicked(BundleSO b, System.Action onComplete)
