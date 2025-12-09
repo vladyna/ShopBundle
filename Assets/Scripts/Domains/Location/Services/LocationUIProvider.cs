@@ -1,4 +1,4 @@
-using Core.Abstractions;
+﻿using Core.Abstractions;
 using Domains.Location.Controllers;
 using Domains.Location.Models;
 namespace Domains.Gold.Services
@@ -11,7 +11,7 @@ namespace Domains.Gold.Services
 
         public override void IncrementValue()
         {
-            ((LocationController)Controller).ModifyLocation("Nexus");
+            ((LocationController)Controller).ModifyLocation("Поле");
         }
     }
 }
