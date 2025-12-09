@@ -14,6 +14,7 @@ namespace Shop.Views
         [SerializeField] private Button _infoButton;
 
         private BundleSO _bundle;
+        private bool _isProcessing = false;
 
         public event Action<BundleSO, Action> OnBuyButtonClicked;
         public event Action<BundleSO> OnInfoButtonClicked;
@@ -30,6 +31,8 @@ namespace Shop.Views
 
         public void UpdateBuyButton()
         {
+            if (_isProcessing)
+                return;
             OnBuyButtonUpdate?.Invoke(_bundle, (canPurchase) =>
             {
                 _buyButton.interactable = canPurchase;
@@ -42,9 +45,10 @@ namespace Shop.Views
             {
                 _buyButton.interactable = false;
                 _buyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Обработка...";
+                _isProcessing = true;
                 OnBuyButtonClicked.Invoke(_bundle, () =>
                 {
-                    _buyButton.interactable = true;
+                    _isProcessing = false;
                     _buyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Купить";
                     UpdateBuyButton();
                 });

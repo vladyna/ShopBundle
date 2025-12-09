@@ -35,17 +35,33 @@ namespace Shop.Services
             {
                 var bundleCardView = Instantiate(_bundleCardViewPrefab);
                 bundleCardView.Setup(bundle);
-                bundleCardView.OnBuyButtonClicked += (b, onComplete) =>
-                {
-                    _shopController.Purchase(b, onComplete);
-                };
-                bundleCardView.OnBuyButtonUpdate += (b, onComplete) =>
-                {
-                    onComplete.Invoke(_shopController.CanPurchase(b));
-                };
+                bundleCardView.OnBuyButtonClicked += OnBuyButtonClicked;
+                bundleCardView.OnBuyButtonUpdate += OnBuyButtonUpdate;
                 bundleCardView.OnInfoButtonClicked += OnInfoButtonClicked;
                 _bundleShopView.AddBundleViewCard(bundleCardView);
             }
+        }
+
+        private void OnBuyButtonClicked(BundleSO b, System.Action onComplete)
+        {
+            var bundle = b;
+            var onCompleteAction = onComplete;
+            ServerService.Instance.SendRequest((success =>
+            {
+                if (success && _shopController.CanPurchase(bundle))
+                {
+                    _shopController.Purchase(bundle, onCompleteAction);
+                }
+                else
+                {
+                    onCompleteAction?.Invoke();
+                }
+            }));
+        }
+
+        private void OnBuyButtonUpdate(BundleSO b, System.Action<bool> onComplete)
+        {
+            onComplete.Invoke(_shopController.CanPurchase(b));
         }
 
         private void OnInfoButtonClicked(BundleSO obj)
