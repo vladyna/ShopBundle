@@ -43,11 +43,11 @@ namespace Domains.Health.Controllers
         {
             int value = 0;
             if (action is HealthDeltaSO gAction)
-                value = -gAction.Value;
+                value = gAction.Value;
             if (action is HealthPercentageSO pAction)
             {
                 int current = GetCurrentValue();
-                value = -(current * pAction.Value / 100);
+                value = (current * pAction.Value / 100);
             }
             return value;
         }
