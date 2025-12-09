@@ -24,19 +24,32 @@ namespace Domains.Health.Controllers
                 int current = PlayerData.Instance.Get(_key);
                 return current >= gAction.Value;
             }
+            if (action is HealthPercentageSO)
+                return true;
             return false;
         }
 
         public override void ApplyPrice(BundleAction action)
         {
-            if (action is HealthDeltaSO gAction)
-                ModifyHealth(-gAction.Value);
+            ModifyHealth(-GetActionValue(action));
         }
 
         public override void ApplyReward(BundleAction action)
         {
+            ModifyHealth(GetActionValue(action));
+        }
+
+        private int GetActionValue(BundleAction action)
+        {
+            int value = 0;
             if (action is HealthDeltaSO gAction)
-                ModifyHealth(gAction.Value);
+                value = -gAction.Value;
+            if (action is HealthPercentageSO pAction)
+            {
+                int current = GetCurrentValue();
+                value = -(current * pAction.Value / 100);
+            }
+            return value;
         }
     }
 }

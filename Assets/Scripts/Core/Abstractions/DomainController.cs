@@ -28,11 +28,11 @@ namespace Core.Abstractions
             }
         }
 
-        public virtual T GetCurrentValue(ValueKey<T> key)
+        public virtual T GetCurrentValue()
         {
-            if (playerData.Contains(key))
+            if (playerData.Contains(_key))
             {
-                return playerData.Get(key);
+                return playerData.Get(_key);
             }
             return default;
         }

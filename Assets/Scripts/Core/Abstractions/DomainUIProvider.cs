@@ -20,7 +20,7 @@ namespace Core.Abstractions
 
         public virtual string GetDisplayValue()
         {
-            return Controller.GetCurrentValue(Key).ToString();
+            return Controller.GetCurrentValue().ToString();
         }
         public abstract void IncrementValue();
     }
