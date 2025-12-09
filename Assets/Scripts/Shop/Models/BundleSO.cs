@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Shop
 {
-    [CreateAssetMenu(menuName = "BundleShop/Shop/Bundle")]
+    [CreateAssetMenu(menuName = "BundleShop/Shop/Bundle", fileName ="Bundle")]
     public class BundleSO : ScriptableObject
     {
         public string BundleName;
