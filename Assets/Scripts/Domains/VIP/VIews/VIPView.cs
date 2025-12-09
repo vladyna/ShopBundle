@@ -23,7 +23,7 @@ namespace Domains.VIP.Views
 
         private void UpdateView()
         {
-            _vipText.text = _provider.DisplayName;
+            _vipText.text = $"{_provider.DisplayName}:";
             _vipAmountText.text = _provider.GetDisplayValue();
         }
     }

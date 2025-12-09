@@ -23,7 +23,7 @@ namespace Domains.Location.Views
 
         private void UpdateView()
         {
-            _locationText.text = _provider.DisplayName;
+            _locationText.text = $"{_provider.DisplayName}:";
             _locationAmountText.text = _provider.GetDisplayValue();
         }
     }

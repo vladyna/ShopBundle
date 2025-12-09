@@ -23,7 +23,7 @@ namespace Domains.Gold.Views
     
         private void UpdateView()
         {
-            _healthText.text = _provider.DisplayName;
+            _healthText.text = $"{_provider.DisplayName}:";
             _healthAmountText.text = _provider.GetDisplayValue();
         }
     }
