@@ -11,7 +11,7 @@ namespace Shop.Services
     public class ShopDetailService : MonoBehaviour
     {
         [SerializeField] private BundleCardView _bundleCardView;
-        [SerializeField] private BundleShopDetailView _bundleShopDetaulView;
+        [SerializeField] private BundleShopDetailView _bundleShopDetailView;
         [SerializeField] private SceneObject _shopScene;
         [SerializeField] private DomainProvider[] _domainProviders;
         private ShopController _shopController;
@@ -22,17 +22,22 @@ namespace Shop.Services
             _shopController = new ShopController(_domainProviders);
             InitializeBundle();
             PlayerData.Instance.OnDataChanged += OnStatsUpdated;
-            _bundleShopDetaulView.OnBackButtonClicked += LoadMainScene;
+            _bundleShopDetailView.OnBackButtonClicked += LoadMainScene;
         }
 
         private void OnDestroy()
         {
             PlayerData.Instance.OnDataChanged -= OnStatsUpdated;
-            _bundleShopDetaulView.OnBackButtonClicked -= LoadMainScene;
+            _bundleShopDetailView.OnBackButtonClicked -= LoadMainScene;
         }
 
         private void InitializeBundle()
         {
+            if(BundleNavigation.SelectedBundle == null)
+            {
+                LoadMainScene();
+                return;
+            }
             var bundleCardView = _bundleCardView;
             _currentBundleCardView = bundleCardView;
             bundleCardView.OnBuyButtonClicked += OnBuyButtonClicked;

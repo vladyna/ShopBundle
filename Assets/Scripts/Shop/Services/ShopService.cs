@@ -20,7 +20,7 @@ namespace Shop.Services
         private void Start()
         {
             _shopController = new ShopController(_domainProviders);
-            IntializeBundleShopUI();
+            InitializeBundleShopUI();
             PlayerData.Instance.OnDataChanged += OnStatsUpdated;
         }
 
@@ -29,7 +29,7 @@ namespace Shop.Services
             PlayerData.Instance.OnDataChanged -= OnStatsUpdated;
         }
 
-        private void IntializeBundleShopUI()
+        private void InitializeBundleShopUI()
         {
             foreach (var bundle in _bundles)
             {
@@ -61,7 +61,7 @@ namespace Shop.Services
 
         private void OnBuyButtonUpdate(BundleSO b, System.Action<bool> onComplete)
         {
-            onComplete.Invoke(_shopController.CanPurchase(b));
+            onComplete?.Invoke(_shopController.CanPurchase(b));
         }
 
         private void OnInfoButtonClicked(BundleSO obj)
