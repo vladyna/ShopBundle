@@ -12,7 +12,7 @@ ShopDomain is a Unity-based sample project that demonstrates a modular "bundle s
 - Scene navigation via `SceneLoaderService`
 
 ## Tech Stack
-- Unity
+- Unity 2022.3.62f1
 - C# 9.0
 - .NET Framework 4.7.1 (per project configuration)
 
