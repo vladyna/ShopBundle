@@ -1,3 +1,4 @@
+using Core.Players;
 using System;
 
 namespace Core.Abstractions
@@ -6,7 +7,7 @@ namespace Core.Abstractions
     {
         protected ValueKey<T> _key;
 
-        protected PlayerData.PlayerData playerData => PlayerData.PlayerData.Instance;
+        protected PlayerData playerData => PlayerData.Instance;
 
         public ValueKey<T> Key => _key;
         public event Action OnValueChanged;

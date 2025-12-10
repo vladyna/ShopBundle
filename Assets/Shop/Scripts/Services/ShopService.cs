@@ -1,6 +1,6 @@
 using Core.Abstractions;
 using Core.Data;
-using Core.PlayerData;
+using Core.Players;
 using Core.Services;
 using Shop.Controllers;
 using Shop.Views;

@@ -1,5 +1,5 @@
 using Core.Abstractions;
-using Core.PlayerData;
+using Core.Players;
 using Domains.Gold.Actions;
 using Domains.Gold.Models;
 

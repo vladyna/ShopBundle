@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.PlayerData
+namespace Core.Players
 {
     public class PlayerData : MonoBehaviour
     {
