@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bundleCardView: {fileID: 2022905439}
-  _bundleShopDetaulView: {fileID: 182173241}
+  _bundleShopDetailView: {fileID: 182173241}
   _shopScene: {fileID: 11400000, guid: c3bd5106c339d824ea9c6f85ab353b08, type: 2}
   _domainProviders:
   - {fileID: 1891230696}
